@@ -1,0 +1,86 @@
+{
+    "dashboard": {
+        "totalScanned": 542,
+        "damagedCount": 11,
+        "stockCount": 389
+    },
+    "alerts": [
+        {
+            "productName": "Shampoo Bottle",
+            "sku": "SKU-001",
+            "damage": "Leak",
+            "confidence": 87,
+            "time": "2025-06-22T10:00:00"
+        },
+        {
+            "productName": "Toothpaste Pack",
+            "sku": "SKU-002",
+            "damage": "Dent",
+            "confidence": 76,
+            "time": "2025-06-22T11:00:00"
+        },
+        {
+            "productName": "Face Cream Tube",
+            "sku": "SKU-003",
+            "damage": "Crack",
+            "confidence": 91,
+            "time": "2025-06-22T12:15:00"
+        },
+        {
+            "productName": "Hair Oil Bottle",
+            "sku": "SKU-004",
+            "damage": "Spill",
+            "confidence": 84,
+            "time": "2025-06-22T13:05:00"
+        },
+        {
+            "productName": "Body Lotion",
+            "sku": "SKU-005",
+            "damage": "Leak",
+            "confidence": 89,
+            "time": "2025-06-22T13:50:00"
+        },
+        {
+            "productName": "Face Wash",
+            "sku": "SKU-006",
+            "damage": "Crush",
+            "confidence": 72,
+            "time": "2025-06-22T14:30:00"
+        },
+        {
+            "productName": "Conditioner Pack",
+            "sku": "SKU-007",
+            "damage": "Broken Seal",
+            "confidence": 94,
+            "time": "2025-06-22T15:20:00"
+        },
+        {
+            "productName": "Mouthwash",
+            "sku": "SKU-008",
+            "damage": "Cap Missing",
+            "confidence": 79,
+            "time": "2025-06-22T16:00:00"
+        },
+        {
+            "productName": "Hand Sanitizer",
+            "sku": "SKU-009",
+            "damage": "Cracked Bottle",
+            "confidence": 88,
+            "time": "2025-06-22T16:45:00"
+        },
+        {
+            "productName": "Shaving Cream",
+            "sku": "SKU-010",
+            "damage": "Puncture",
+            "confidence": 81,
+            "time": "2025-06-22T17:30:00"
+        },
+        {
+            "productName": "Deodorant Spray",
+            "sku": "SKU-011",
+            "damage": "Spray Nozzle Broken",
+            "confidence": 90,
+            "time": "2025-06-22T18:00:00"
+        }
+    ]
+}
