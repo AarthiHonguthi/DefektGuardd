@@ -1,0 +1,97 @@
+.scanner-container {
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+    color: #222;
+}
+
+.scanner-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.scanner-container p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.scanner-panels {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.panel {
+    flex: 1;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.panel-header {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.webcam-header {
+    background-color: #ffca28;
+}
+
+.scanned-header {
+    background-color: #4caf50;
+    color: white;
+}
+
+.camera-box {
+    flex: 1;
+    margin: 1rem;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+}
+
+.webcam-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.open-camera-btn {
+    margin: 0 1rem 1rem;
+    padding: 0.75rem;
+    background-color: #5c5c5c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.upload-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f9fa;
+    height: 220px;
+}
+
+.file-input {
+    margin-bottom: 0.75rem;
+}
+
+.file-name {
+    color: #333;
+    font-size: 0.95rem;
+}
