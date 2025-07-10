@@ -2,3 +2,4 @@
 /backend/__pycache__
 /backend/model/__pycache__
 /backend/routes/__pycache__
+/backend/model/resnet34_model.h5
