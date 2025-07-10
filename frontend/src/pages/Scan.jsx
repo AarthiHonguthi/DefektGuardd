@@ -5,19 +5,26 @@ import "./ScanPage.css";
 
 const Scan = () => {
   const webcamRef = useRef(null);
+  const fileInputRef = useRef(null); // new
+
   const [cameraOn, setCameraOn] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const [prediction, setPrediction] = useState(null);
+  const [confidence, setConfidence] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const backendURL = `${process.env.BACKEND_URL}/predict`;
+  const backendURL = `${process.env.REACT_APP_BACKEND_URL}/predict`;
 
   const sendToBackend = (file) => {
+    console.log("Sending...");
+    console.log("Backend URL:", process.env.REACT_APP_BACKEND_URL);
+
     const formData = new FormData();
     formData.append("image", file);
 
     setLoading(true);
     setPrediction(null);
+    setConfidence(null);
 
     fetch(backendURL, {
       method: "POST",
@@ -25,14 +32,19 @@ const Scan = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.prediction) {
-          setPrediction(data.prediction);
-        } else {
-          alert("Error: " + data.error);
+        if (data.label) {
+          setPrediction(data.label);
+          setConfidence(data.confidence);
         }
       })
-      .catch((err) => alert("Failed to predict"))
-      .finally(() => setLoading(false));
+      .catch(() => alert("Failed to predict"))
+      .finally(() => {
+        setLoading(false);
+        setImageFile(null); // clear the selected file
+        if (fileInputRef.current) {
+          fileInputRef.current.value = ""; // reset file input
+        }
+      });
   };
 
   const handleStartCamera = () => {
@@ -110,6 +122,7 @@ const Scan = () => {
               accept="image/*"
               onChange={handleFileChange}
               className="file-input"
+              ref={fileInputRef} // attach ref
             />
             {imageFile && (
               <p className="file-name">Selected: {imageFile.name}</p>
@@ -122,10 +135,9 @@ const Scan = () => {
         {loading && <p>🔍 Analyzing image...</p>}
         {prediction && (
           <p className={`prediction-text ${prediction}`}>
-            Prediction:{" "}
-            <strong>
-              {prediction === "damaged" ? "Damaged 📦" : "Intact ✅"}
-            </strong>
+            Prediction: <strong>{prediction}</strong>
+            <br />
+            Confidence: {(confidence * 100).toFixed(2)}%
           </p>
         )}
       </div>

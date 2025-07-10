@@ -1,1 +1,4 @@
 /backend/model/detection_model.h5
+/backend/__pycache__
+/backend/model/__pycache__
+/backend/routes/__pycache__
