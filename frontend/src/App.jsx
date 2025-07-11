@@ -4,12 +4,22 @@ import Scan from "./pages/Scan";
 import Inventory from "./pages/Inventory";
 import Alerts from "./pages/Alerts";
 import Layout from "./components/Layout";
-
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <Router>
       <Layout>
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              fontSize: "14px",
+              padding: "12px 16px",
+            },
+          }}
+        />
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/scan" element={<Scan />} />

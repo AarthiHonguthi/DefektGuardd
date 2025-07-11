@@ -2,10 +2,11 @@ import React, { useRef, useState, useCallback } from "react";
 import Webcam from "react-webcam";
 import { FaCamera, FaUpload } from "react-icons/fa";
 import "./ScanPage.css";
+import toast from "react-hot-toast";
 
 const Scan = () => {
   const webcamRef = useRef(null);
-  const fileInputRef = useRef(null); // new
+  const fileInputRef = useRef(null);
 
   const [cameraOn, setCameraOn] = useState(false);
   const [imageFile, setImageFile] = useState(null);
@@ -16,9 +17,6 @@ const Scan = () => {
   const backendURL = `${process.env.REACT_APP_BACKEND_URL}/predict`;
 
   const sendToBackend = (file) => {
-    console.log("Sending...");
-    console.log("Backend URL:", process.env.REACT_APP_BACKEND_URL);
-
     const formData = new FormData();
     formData.append("image", file);
 
@@ -35,14 +33,18 @@ const Scan = () => {
         if (data.label) {
           setPrediction(data.label);
           setConfidence(data.confidence);
+
+          if (data.label.toLowerCase() === "damaged") {
+            toast.success("Damaged item has been added to Alerts.");
+          }
         }
       })
       .catch(() => alert("Failed to predict"))
       .finally(() => {
         setLoading(false);
-        setImageFile(null); // clear the selected file
+        setImageFile(null);
         if (fileInputRef.current) {
-          fileInputRef.current.value = ""; // reset file input
+          fileInputRef.current.value = "";
         }
       });
   };
@@ -132,14 +134,36 @@ const Scan = () => {
       </div>
 
       <div className="result-section">
-        {loading && <p>🔍 Analyzing image...</p>}
-        {prediction && (
-          <p className={`prediction-text ${prediction}`}>
-            Prediction: <strong>{prediction}</strong>
-            <br />
-            Confidence: {(confidence * 100).toFixed(2)}%
-          </p>
+        {loading && (
+          <div className="result-card loading">
+            <div className="spinner"></div>
+            <p className="loading-text">Analyzing image, please wait...</p>
+          </div>
         )}
+
+        {prediction && !loading && (
+          <div className={`result-card ${prediction.toLowerCase()}`}>
+            <h2 className="result-title">Scan Result</h2>
+            <div className="result-info">
+              <p className="result-label">
+                <strong>Status:</strong>{" "}
+                <span className="status-tag">{prediction.toUpperCase()}</span>
+              </p>
+              <p className="result-confidence">
+                <strong>Confidence:</strong>{" "}
+                {confidence && (confidence * 100).toFixed(2)}%
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="alert-note">
+        <strong>Note:</strong> You can find all{" "}
+        <span className="highlight-text">damaged items</span> in the{" "}
+        <a href="/alerts" className="alert-link">
+          Alert Page
+        </a>
+        .
       </div>
     </div>
   );
