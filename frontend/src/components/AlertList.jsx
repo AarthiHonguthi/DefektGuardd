@@ -40,7 +40,7 @@ const AlertList = ({ alerts }) => {
               <td>{alert.sku || "-"}</td>
               <td>{alert.damage || "-"}</td>
               <td>{alert.confidence ? `${alert.confidence}%` : "-"}</td>
-              <td>{alert.time || "-"}</td>
+              <td>{alert.timestamp || "-"}</td>
             </tr>
           ))}
         </tbody>

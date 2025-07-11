@@ -1,0 +1,85 @@
+.alerts-page {
+    padding: 2rem;
+    background-color: #f9fafb;
+    min-height: 100vh;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+}
+
+.alert-group {
+    margin-bottom: 2rem;
+}
+
+.group-date {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.alert-card {
+    background: #ffffff;
+    border-left: 5px solid #ef4444;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.alert-time {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.alert-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.alert-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+}
+
+.alert-image img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    margin-top: 0.5rem;
+    border: 1px solid #e5e7eb;
+}
+
+/* Status badge styles */
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.status-badge.damaged {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.status-badge.ok {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-badge.unknown {
+    background-color: #e5e7eb;
+    color: #374151;
+}
