@@ -33,7 +33,7 @@
 .dashboard-cards {
     display: flex;
     gap: 20px;
-    margin-bottom: 32px;
+    /* margin-bottom: 32px; */
 }
 
 .stat-card {
