@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Dashboard.css";
-import AlertList from "../components/AlertList";
+import DetailList from "../components/DetailList"; 
 import DonutChart from "../components/DonutChart";
 import DamagedLineChart from "../components/DamagedLineChart";
-import { fetchDashboardStats, fetchAlerts } from "../services/api";
+import { fetchDashboardStats, fetchDetails } from "../services/api";
 
 const chartData = [
   {
@@ -30,7 +30,7 @@ const Dashboard = () => {
     const loadDashboard = async () => {
       try {
         const statsRes = await fetchDashboardStats();
-        const alertsRes = await fetchAlerts();
+        const alertsRes = await fetchDetails();
         setStats(statsRes.data);
         setAlerts(alertsRes.data);
       } catch (error) {
@@ -96,8 +96,9 @@ const Dashboard = () => {
       </div>
 
       <div className="dashboard-section">
-        <h2>Recent Damage Alerts</h2>
-        <AlertList alerts={alerts} />
+        <h2>Recent Damage Details</h2>
+        <DetailList alerts={alerts} />
+
       </div>
     </div>
   );

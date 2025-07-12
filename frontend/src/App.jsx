@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Scan from "./pages/Scan";
 import Inventory from "./pages/Inventory";
-import Alerts from "./pages/Alerts";
+import Details from "./pages/Details"; 
 import Layout from "./components/Layout";
 import { Toaster } from "react-hot-toast";
 
@@ -24,7 +24,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/scan" element={<Scan />} />
           <Route path="/inventory" element={<Inventory />} />
-          <Route path="/alerts" element={<Alerts />} />
+          <Route path="/details" element={<Details />} />
         </Routes>
       </Layout>
     </Router>

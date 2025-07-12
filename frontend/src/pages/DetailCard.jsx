@@ -1,7 +1,7 @@
 import React from "react";
-import "./AlertCard.css";
+import "./DetailCard.css";
 
-const AlertCard = ({ alert }) => {
+const DetailCard = ({ alert }) => {
   const { id, productName, sku, image, shippedFrom, confidence, timestamp } =
     alert;
 
@@ -28,4 +28,4 @@ const AlertCard = ({ alert }) => {
   );
 };
 
-export default AlertCard;
+export default DetailCard;

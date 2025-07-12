@@ -160,8 +160,8 @@ const Scan = () => {
       <div className="alert-note">
         <strong>Note:</strong> You can find all{" "}
         <span className="highlight-text">damaged items</span> in the{" "}
-        <a href="/alerts" className="alert-link">
-          Alert Page
+        <a href="/details" className="alert-link">
+          Details Page
         </a>
         .
       </div>

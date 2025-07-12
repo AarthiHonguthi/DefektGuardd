@@ -71,3 +71,42 @@
 .page-nav span {
     margin: 0 8px;
 }
+.pagination-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 16px;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.per-page select {
+    padding: 4px 8px;
+    border-radius: 2px;
+    border: 0.5px solid #ccc;
+    outline: none;
+}
+
+.per-page select:focus {
+    border-color: #408dfb;
+    box-shadow: 0 0 0 1px #408dfb33;
+    background-color: #f9f9f9;
+    color: #408dfb;
+}
+
+.page-nav button {
+    background: white;
+    border: 0.5px solid #ccc;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.page-nav button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-nav span {
+    margin: 0 8px;
+}

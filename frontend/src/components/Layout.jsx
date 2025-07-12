@@ -8,7 +8,13 @@ const Layout = ({ children }) => {
   return (
     <div className="layout">
       <aside className="sidebar">
-        <img src={walmartLogo} alt="Walmart Logo" className="logo" />
+        <img
+          src={walmartLogo}
+          alt="Walmart Logo"
+          className="logo"
+          style={{ width: "200px", height: "60px" }} // increase width as needed
+        />
+
         <nav>
           <NavLink exact="true" to="/" activeclassname="active-link">
             <FaHome className="icon" />
@@ -18,16 +24,13 @@ const Layout = ({ children }) => {
             <FaBarcode className="icon" />
             Scan
           </NavLink>
-          <NavLink
-            to="/inventory"
-            activeclassname="active-link"
-          >
+          <NavLink to="/inventory" activeclassname="active-link">
             <FaBoxes className="icon" />
             Inventory
           </NavLink>
-          <NavLink to="/alerts" activeclassname="active-link">
+          <NavLink to="/details" activeclassname="active-link">
             <FaBell className="icon" />
-            Alerts
+            Details
           </NavLink>
         </nav>
       </aside>

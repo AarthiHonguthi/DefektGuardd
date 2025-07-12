@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./AlertList.css";
+import "./DetailList.css";
 import { FiSettings } from "react-icons/fi";
 
 
-const AlertList = ({ alerts }) => {
+const DetailList = ({ alerts }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [alertsPerPage, setAlertsPerPage] = useState(5); // Default: 5 per page
 
@@ -74,4 +74,4 @@ const AlertList = ({ alerts }) => {
   );
 };
 
-export default AlertList;
+export default DetailList;
