@@ -93,22 +93,46 @@ const Details = () => {
                       : "badge-red"
                   }`}
                 >
-                  {item.damage || "Unknown"}
+                  {item.damage?.toUpperCase() || "UNKNOWN"}
                 </span>
               </td>
               <td>
-                <span className={`badge ${getConfidenceClass(item.confidence, item.damage)}`}>
+                <span
+                  className={`badge ${getConfidenceClass(
+                    item.confidence,
+                    item.damage
+                  )}`}
+                >
                   {item.confidence}%
                 </span>
               </td>
               <td>{item.shippedFrom || "-"}</td>
-              <td>
+              <td
+                style={{
+                  width: "100px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 {item.image ? (
                   <button
-                    className="eye-button"
                     onClick={() => setModalImage(item.image)}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer",
+                    }}
                   >
-                    <img src="/view_icon.png" alt="View" />
+                    <img
+                      src="/view_icon.png"
+                      alt="View"
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                      }}
+                    />
                   </button>
                 ) : (
                   "-"
