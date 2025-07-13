@@ -4,11 +4,11 @@ import axios from "axios";
 import "./../styles/details.css";
 import DetailModal from "../components/DetailModal";
 import damagedfoodpackagingbox10 from "../assets/damagedfoodpackagingbox10.jpeg";
-import intact2 from "../assets/intact2.jpeg";
-import intact3 from "../assets/intact3.jpeg";
-import intant1 from "../assets/intant1.jpeg";
-import testter from "../assets/testter.jpeg";
-import example from "../assets/example.jpeg";
+import intact2 from "../assets/sample/intact2.jpeg";
+import intact3 from "../assets/sample/intact3.jpeg";
+import intant1 from "../assets/sample/intant1.jpeg";
+import testter from "../assets/sample/testter.jpeg";
+import example from "../assets/sample/example.jpeg";
 
 const Details = () => {
   const [details, setDetails] = useState([]);
