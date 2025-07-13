@@ -3,6 +3,12 @@ import axios from "axios";
 // ...imports
 import "./../styles/details.css";
 import DetailModal from "../components/DetailModal";
+import damagedfoodpackagingbox10 from "../assets/damagedfoodpackagingbox10.jpeg";
+import intact2 from "../assets/intact2.jpeg";
+import intact3 from "../assets/intact3.jpeg";
+import intant1 from "../assets/intant1.jpeg";
+import testter from "../assets/testter.jpeg";
+import example from "../assets/example.jpeg";
 
 const Details = () => {
   const [details, setDetails] = useState([]);
@@ -13,6 +19,7 @@ const Details = () => {
   const [conditionFilter, setConditionFilter] = useState("all");
   const [warehouseFilter, setWarehouseFilter] = useState("all");
   const [confidenceFilter, setConfidenceFilter] = useState("all");
+  const [showFilterModal, setShowFilterModal] = useState(false);
 
   useEffect(() => {
     const sampleData = [
@@ -23,7 +30,7 @@ const Details = () => {
         damage: "intact",
         confidence: 98,
         shippedFrom: "Warehouse A",
-        image: "/sample1.jpg",
+        image: intant1,
       },
       {
         id: 2,
@@ -32,7 +39,7 @@ const Details = () => {
         damage: "damaged",
         confidence: 72,
         shippedFrom: "Warehouse B",
-        image: "/sample2.jpg",
+        image: damagedfoodpackagingbox10,
       },
       {
         id: 3,
@@ -41,7 +48,7 @@ const Details = () => {
         damage: "intact",
         confidence: 100,
         shippedFrom: "Warehouse C",
-        image: null,
+        image: intact2,
       },
       {
         id: 4,
@@ -50,7 +57,7 @@ const Details = () => {
         damage: "damaged",
         confidence: 65,
         shippedFrom: "Warehouse D",
-        image: "/sample3.jpg",
+        image: testter,
       },
       {
         id: 5,
@@ -59,7 +66,7 @@ const Details = () => {
         damage: "intact",
         confidence: 87,
         shippedFrom: "Warehouse A",
-        image: null,
+        image: intact3,
       },
       {
         id: 6,
@@ -68,7 +75,7 @@ const Details = () => {
         damage: "damaged",
         confidence: 59,
         shippedFrom: "Warehouse B",
-        image: "/sample4.jpg",
+        image: example,
       },
       {
         id: 7,
@@ -77,16 +84,16 @@ const Details = () => {
         damage: "intact",
         confidence: 90,
         shippedFrom: "Warehouse C",
-        image: null,
+        image: intant1,
       },
       {
         id: 8,
         productName: "Laptop Stand",
         sku: "LST258",
-        damage: "damaged",
+        damage: "intact",
         confidence: 74,
         shippedFrom: "Warehouse D",
-        image: "/sample5.jpg",
+        image: intact3,
       },
       {
         id: 9,
@@ -95,7 +102,7 @@ const Details = () => {
         damage: "intact",
         confidence: 92,
         shippedFrom: "Warehouse A",
-        image: null,
+        image: intact2,
       },
       {
         id: 10,
@@ -104,7 +111,7 @@ const Details = () => {
         damage: "damaged",
         confidence: 68,
         shippedFrom: "Warehouse B",
-        image: "/sample6.jpg",
+        image: damagedfoodpackagingbox10,
       },
     ];
 
@@ -159,6 +166,12 @@ const Details = () => {
     }
   };
 
+  const handleClearFilters = () => {
+    setConfidenceFilter("all");
+    setConditionFilter("all");
+    setWarehouseFilter("all");
+  };
+
   return (
     <div className="details-wrapper">
       <div className="top-bar">
@@ -170,10 +183,17 @@ const Details = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button disabled className="btn btn-green">
+        <button
+          className="btn btn-green"
+          onClick={() => setShowFilterModal(true)}
+        >
           Filters
         </button>
-        <div className="filters">
+        <button className="btn btn-gray" onClick={handleClearFilters}>
+          Clear Filters
+        </button>
+
+        {/* <div className="filters">
           <div className="filter-group">
             <label htmlFor="confidence">Confidence:</label>
             <select
@@ -228,7 +248,7 @@ const Details = () => {
               )}
             </select>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <table className="detail-table">
@@ -335,6 +355,84 @@ const Details = () => {
 
       {modalImage && (
         <DetailModal image={modalImage} onClose={() => setModalImage(null)} />
+      )}
+      {showFilterModal && (
+        <div
+          className="custom-modal-overlay"
+          onClick={() => setShowFilterModal(false)}
+        >
+          <div className="custom-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Filter Options</h2>
+              <button
+                onClick={() => setShowFilterModal(false)}
+                className="close-btn"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="modal-body">
+              <div className="modal-field">
+                <label>Confidence Range</label>
+                <select
+                  value={confidenceFilter}
+                  onChange={(e) => setConfidenceFilter(e.target.value)}
+                >
+                  <option value="all">All</option>
+                  <option value="0-10">0 - 10%</option>
+                  <option value="10-20">10 - 20%</option>
+                  <option value="20-30">20 - 30%</option>
+                  <option value="30-40">30 - 40%</option>
+                  <option value="40-50">40 - 50%</option>
+                  <option value="50-60">50 - 60%</option>
+                  <option value="60-70">60 - 70%</option>
+                  <option value="70-80">70 - 80%</option>
+                  <option value="80-90">80 - 90%</option>
+                  <option value="90-101">90 - 100%</option>
+                </select>
+              </div>
+
+              <div className="modal-field">
+                <label>Condition</label>
+                <select
+                  value={conditionFilter}
+                  onChange={(e) => setConditionFilter(e.target.value)}
+                >
+                  <option value="all">All</option>
+                  <option value="intact">Intact</option>
+                  <option value="damaged">Damaged</option>
+                </select>
+              </div>
+
+              <div className="modal-field">
+                <label>Warehouse</label>
+                <select
+                  value={warehouseFilter}
+                  onChange={(e) => setWarehouseFilter(e.target.value)}
+                >
+                  <option value="all">All</option>
+                  {Array.from(new Set(details.map((d) => d.shippedFrom))).map(
+                    (loc) => (
+                      <option key={loc} value={loc}>
+                        {loc}
+                      </option>
+                    )
+                  )}
+                </select>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button
+                className="btn-close"
+                onClick={() => setShowFilterModal(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
