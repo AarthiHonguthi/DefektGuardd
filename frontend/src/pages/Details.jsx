@@ -10,17 +10,124 @@ const Details = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [detailsPerPage, setDetailsPerPage] = useState(10);
   const [modalImage, setModalImage] = useState(null);
+  const [conditionFilter, setConditionFilter] = useState("all");
+  const [warehouseFilter, setWarehouseFilter] = useState("all");
+  const [confidenceFilter, setConfidenceFilter] = useState("all");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/details")
-      .then((res) => setDetails(res.data))
-      .catch((err) => console.error(err));
+    const sampleData = [
+      {
+        id: 1,
+        productName: "Wireless Mouse",
+        sku: "MOU123",
+        damage: "intact",
+        confidence: 98,
+        shippedFrom: "Warehouse A",
+        image: "/sample1.jpg",
+      },
+      {
+        id: 2,
+        productName: "Mechanical Keyboard",
+        sku: "KEY456",
+        damage: "damaged",
+        confidence: 72,
+        shippedFrom: "Warehouse B",
+        image: "/sample2.jpg",
+      },
+      {
+        id: 3,
+        productName: "HD Monitor",
+        sku: "MON789",
+        damage: "intact",
+        confidence: 100,
+        shippedFrom: "Warehouse C",
+        image: null,
+      },
+      {
+        id: 4,
+        productName: "USB Webcam",
+        sku: "WEB999",
+        damage: "damaged",
+        confidence: 65,
+        shippedFrom: "Warehouse D",
+        image: "/sample3.jpg",
+      },
+      {
+        id: 5,
+        productName: "Bluetooth Speaker",
+        sku: "SPK321",
+        damage: "intact",
+        confidence: 87,
+        shippedFrom: "Warehouse A",
+        image: null,
+      },
+      {
+        id: 6,
+        productName: "External Hard Drive",
+        sku: "HDD654",
+        damage: "damaged",
+        confidence: 59,
+        shippedFrom: "Warehouse B",
+        image: "/sample4.jpg",
+      },
+      {
+        id: 7,
+        productName: "Gaming Headset",
+        sku: "HED147",
+        damage: "intact",
+        confidence: 90,
+        shippedFrom: "Warehouse C",
+        image: null,
+      },
+      {
+        id: 8,
+        productName: "Laptop Stand",
+        sku: "LST258",
+        damage: "damaged",
+        confidence: 74,
+        shippedFrom: "Warehouse D",
+        image: "/sample5.jpg",
+      },
+      {
+        id: 9,
+        productName: "Ethernet Cable",
+        sku: "ETH369",
+        damage: "intact",
+        confidence: 92,
+        shippedFrom: "Warehouse A",
+        image: null,
+      },
+      {
+        id: 10,
+        productName: "Wireless Charger",
+        sku: "CHG987",
+        damage: "damaged",
+        confidence: 68,
+        shippedFrom: "Warehouse B",
+        image: "/sample6.jpg",
+      },
+    ];
+
+    setDetails(sampleData);
   }, []);
 
-  const filteredDetails = details.filter((detail) =>
-    detail.productName?.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredDetails = details
+    .filter((detail) =>
+      detail.productName?.toLowerCase().includes(search.toLowerCase())
+    )
+    .filter((detail) =>
+      conditionFilter === "all"
+        ? true
+        : detail.damage?.toLowerCase() === conditionFilter
+    )
+    .filter((detail) =>
+      warehouseFilter === "all" ? true : detail.shippedFrom === warehouseFilter
+    )
+    .filter((detail) => {
+      if (confidenceFilter === "all") return true;
+      const [min, max] = confidenceFilter.split("-").map(Number);
+      return detail.confidence >= min && detail.confidence < max;
+    });
 
   const totalPages = Math.ceil(filteredDetails.length / detailsPerPage);
   const indexOfLast = currentPage * detailsPerPage;
@@ -63,8 +170,65 @@ const Details = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button className="btn btn-green">Add new product</button>
-        <button className="btn btn-outline-green">Export as CSV</button>
+        <button disabled className="btn btn-green">
+          Filters
+        </button>
+        <div className="filters">
+          <div className="filter-group">
+            <label htmlFor="confidence">Confidence:</label>
+            <select
+              id="confidence"
+              className="styled-select"
+              value={confidenceFilter}
+              onChange={(e) => setConfidenceFilter(e.target.value)}
+            >
+              <option value="all">All</option>
+              <option value="0-10">0 - 10%</option>
+              <option value="10-20">10 - 20%</option>
+              <option value="20-30">20 - 30%</option>
+              <option value="30-40">30 - 40%</option>
+              <option value="40-50">40 - 50%</option>
+              <option value="50-60">50 - 60%</option>
+              <option value="60-70">60 - 70%</option>
+              <option value="70-80">70 - 80%</option>
+              <option value="80-90">80 - 90%</option>
+              <option value="90-101">90 - 100%</option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label htmlFor="condition">Condition:</label>
+            <select
+              id="condition"
+              className="styled-select"
+              value={conditionFilter}
+              onChange={(e) => setConditionFilter(e.target.value)}
+            >
+              <option value="all">All</option>
+              <option value="intact">Intact</option>
+              <option value="damaged">Damaged</option>
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label htmlFor="warehouse">Warehouse:</label>
+            <select
+              id="warehouse"
+              className="styled-select"
+              value={warehouseFilter}
+              onChange={(e) => setWarehouseFilter(e.target.value)}
+            >
+              <option value="all">All</option>
+              {Array.from(new Set(details.map((d) => d.shippedFrom))).map(
+                (loc) => (
+                  <option key={loc} value={loc}>
+                    {loc}
+                  </option>
+                )
+              )}
+            </select>
+          </div>
+        </div>
       </div>
 
       <table className="detail-table">
