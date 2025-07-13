@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-// ...imports
 import "./../styles/details.css";
 import DetailModal from "../components/DetailModal";
 import damagedfoodpackagingbox10 from "../assets/damagedfoodpackagingbox10.jpeg";
@@ -193,62 +192,7 @@ const Details = () => {
           Clear Filters
         </button>
 
-        {/* <div className="filters">
-          <div className="filter-group">
-            <label htmlFor="confidence">Confidence:</label>
-            <select
-              id="confidence"
-              className="styled-select"
-              value={confidenceFilter}
-              onChange={(e) => setConfidenceFilter(e.target.value)}
-            >
-              <option value="all">All</option>
-              <option value="0-10">0 - 10%</option>
-              <option value="10-20">10 - 20%</option>
-              <option value="20-30">20 - 30%</option>
-              <option value="30-40">30 - 40%</option>
-              <option value="40-50">40 - 50%</option>
-              <option value="50-60">50 - 60%</option>
-              <option value="60-70">60 - 70%</option>
-              <option value="70-80">70 - 80%</option>
-              <option value="80-90">80 - 90%</option>
-              <option value="90-101">90 - 100%</option>
-            </select>
-          </div>
-
-          <div className="filter-group">
-            <label htmlFor="condition">Condition:</label>
-            <select
-              id="condition"
-              className="styled-select"
-              value={conditionFilter}
-              onChange={(e) => setConditionFilter(e.target.value)}
-            >
-              <option value="all">All</option>
-              <option value="intact">Intact</option>
-              <option value="damaged">Damaged</option>
-            </select>
-          </div>
-
-          <div className="filter-group">
-            <label htmlFor="warehouse">Warehouse:</label>
-            <select
-              id="warehouse"
-              className="styled-select"
-              value={warehouseFilter}
-              onChange={(e) => setWarehouseFilter(e.target.value)}
-            >
-              <option value="all">All</option>
-              {Array.from(new Set(details.map((d) => d.shippedFrom))).map(
-                (loc) => (
-                  <option key={loc} value={loc}>
-                    {loc}
-                  </option>
-                )
-              )}
-            </select>
-          </div>
-        </div> */}
+        
       </div>
 
       <table className="detail-table">
