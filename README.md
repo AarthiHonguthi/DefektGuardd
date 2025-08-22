@@ -123,18 +123,6 @@ npm start
 6. *Scalability:*
    Architecture ready for hardware integration and cloud deployment.
 
----
-
-## 🖼 Screenshots
-<img width="600" alt="Chatbot Interface" src="./frontend/public/screenshots/1.jpg">
-<img width="600" alt="Chatbot Interface" src="./frontend/public/screenshots/2.jpg">
-<img width="600" alt="Chatbot Interface" src="./frontend/public/screenshots/3.jpg">
-<img width="600" alt="Chatbot Interface" src="./frontend/public/screenshots/4.jpg">
-<img width="600" alt="Chatbot Interface" src="./frontend/public/screenshots/5.jpg">
-<img width="600" alt="Chatbot Interface" src="./frontend/public/screenshots/6.jpg">
-<img width="600" alt="Chatbot Interface" src="./frontend/public/screenshots/7.jpg">
-
----
 
 ## Demo Video:
 
