@@ -61,7 +61,7 @@ DefektGuard is an AI-powered computer vision system designed to detect damaged g
 1. *Clone the repository:*
 
 bash
-git clone https://github.com/SlayZ121/DefektGuard.git
+git clone https://github.com/AarthiHonguthi/DefektGuardd.git
 cd DefektGuard
 
 
