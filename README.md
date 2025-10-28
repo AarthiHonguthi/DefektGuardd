@@ -53,7 +53,24 @@ DefektGuard is an AI-powered computer vision system designed to detect damaged g
 * *Communication*: RESTful APIs
 
 ---
+## 📸 Screenshots
 
+<p align="center">
+  <img src="./image1.jpg" width="45%"/>
+  <img src="./image2.jpg" width="45%"/>
+</p>
+<p align="center">
+  <img src="./image3.jpg" width="45%"/>
+  <img src="./image4.jpg" width="45%"/>
+</p>
+<p align="center">
+  <img src="./image5.jpg" width="45%"/>
+  <img src="./image6.jpg" width="45%"/>
+</p>
+<p align="center">
+  <img src="./image7.jpg" width="45%"/>
+</p>
+---
 ## Local Setup:
 
 ### *To Set Up Locally:*
